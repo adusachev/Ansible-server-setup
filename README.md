@@ -4,7 +4,7 @@
 ### Create non-root user with sudo priveleges
 
 ```sh
-ssh root@[SERVER_IP]
+ssh root@<SERVER_IP>
 ```
 
 (on server) Create new user `admin`:
@@ -20,7 +20,7 @@ adduser admin sudo
 
 (on host) Add ssh keys:
 ```sh
-ssh-copy-id -i $HOME/.ssh/[SSH_KEY_NAME].pub admin@[SERVER_IP]
+ssh-copy-id -i $HOME/.ssh/<SSH_KEY_NAME>.pub admin@<SERVER_IP>
 ```
 
 ---
@@ -43,7 +43,7 @@ pip install ansible
 ```sh
 cp ./hosts.example ./hosts
 vim hosts
-# add your SERVER_IP and SSH_KEY_NAME
+# add your <SERVER_IP> and <SSH_KEY_NAME>
 ```
 
 ```sh
@@ -91,11 +91,11 @@ ansible-playbook zsh_playbook.yaml --become-password-file sudo_pass
 (on host)
 ```sh
 cat << EOF >> $HOME/.ssh/config 
-Host SERVER_ALIAS
-Hostname SERVER_IP
+Host <SERVER_ALIAS>
+Hostname <SERVER_IP>
 User admin
 Port 22
-IdentityFile ~/.ssh/SSH_KEY_NAME
+IdentityFile ~/.ssh/<SSH_KEY_NAME>
 ServerAliveInterval 20
 TCPKeepAlive no
 EOF
@@ -103,7 +103,7 @@ EOF
 
 connect to server with alias:
 ```sh
-ssh SERVER_ALIAS
+ssh <SERVER_ALIAS>
 ```
 
 ---
